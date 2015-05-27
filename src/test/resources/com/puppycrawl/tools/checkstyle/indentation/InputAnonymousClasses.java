@@ -52,6 +52,21 @@ class WithAnonnymousClass { //indent:0 exp:0
 class StrangeInstance { //indent:0 exp:0
   public StrangeInstance(InputAnonymousClasses InputAnonymousClasses) {} //indent:2 exp:2
   void foo (String loongString, String secondLongString) {} //indent:2 exp:2
+
+  void baz() { //indent:2 exp:2
+    final WithAnonnymousClass wac = //indent:4 exp:4
+        new WithAnonnymousClass() { //indent:8 exp:8
+          InputAnonymousClasses foo() { //indent:10 exp:10
+            final InputAnonymousClasses x = //indent:12 exp:12
+                new InputAnonymousClasses("a", "b") { //indent:16 exp:16
+                  public boolean foo() { //indent:18 exp:18
+                    return super.foo(); //indent:20 exp:20
+                  } //indent:18 exp:18
+                }; //indent:16 exp:16
+            return x; //indent:12 exp:12
+          } //indent:10 exp:10
+        }; //indent:8 exp:8
+  } //indent:2 exp:2
 } //indent:0 exp:0
 
 @interface MyAnnotation1 {} //indent:0 exp:0
